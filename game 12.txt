@@ -1,0 +1,119 @@
+:root {
+            --pico-bg: #f5f5f5; /* 這是原本的頁面背景，遊戲畫面外圍 */
+           --pico-dark: #333;
+           --pico-hero: #4ea5ff;
+           --pico-door: #2ecc71;
+            --pico-hp: #ff4757;
+        }
+ 
+        body {
+           font-family: '微軟正黑體', sans-serif;
+           background-color: var(--pico-bg);
+            margin: 0;
+            display: flex;
+           flex-direction: column;
+           align-items: center;
+            height: 100vh;
+            overflow: hidden;
+           touch-action: none;
+        }
+ 
+        #start-screen, #review-screen {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+           background: rgba(0,0,0,0.95);
+            color: white;
+            display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+            z-index: 100;
+           text-align: center;
+        }
+ 
+        #review-screen { display: none; overflow-y: auto; padding: 20px; box-sizing: border-box; }
+ 
+        .start-btn {
+           background: var(--pico-hero);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+           border-radius: 30px;
+            cursor: pointer;
+           margin-top: 20px;
+           box-shadow: 0 4px 0 #2980b9;
+        }
+ 
+        #ui-top {
+            display: flex;
+           justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 20px;
+           font-weight: bold;
+           box-sizing: border-box;
+            font-size: 18px;
+        }
+ 
+        #question-box {
+           background: var(--pico-dark);
+            color: white;
+            padding: 15px;
+           border-radius: 12px;
+            font-size: 18px;
+            width: 90%;
+            max-width: 780px;
+           text-align: center;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+           margin-bottom: 10px;
+           min-height: 60px;
+            display: flex;
+           flex-direction: column;
+           justify-content: center;
+        }
+ 
+        #game-wrapper { position: relative; width: 100%; max-width: 800px; }
+ 
+        canvas {
+            /* 這裡修改為神祕感的背景 */
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 70%, #000000 100%);
+            /* 加入一點微弱的星光效果 (選用，不影響邏輯) */
+            background-image: 
+                radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 70%, #000000 100%),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 1px),
+                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 100px 100px;
+            background-position: 0 0, 0 0, 25px 25px;
+
+            border: 4px solid var(--pico-dark);
+           border-radius: 8px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+ 
+        .review-item {
+           background: #444;
+            margin: 10px 0;
+            padding: 15px;
+           border-left: 5px solid var(--pico-hp);
+           text-align: left;
+            width: 100%;
+            max-width: 600px;
+           border-radius: 4px;
+        }
+ 
+       #mobile-controls {
+            display: none; width: 100%; justify-content: space-between;
+            padding: 20px; box-sizing: border-box; position: fixed; bottom: 20px; left: 0;
+        }
+ 
+        .control-btn {
+            width: 70px; height: 70px; background: rgba(0, 0, 0, 0.15);
+            border: 3px solid var(--pico-dark); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; font-size: 24px;
+           user-select: none;
+        }
+ 
+        @media (max-width: 850px) { #mobile-controls { display: flex; } }
